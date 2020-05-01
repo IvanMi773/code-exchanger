@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import { createProvider } from './vue-apollo'
 
+import '@/assets/scss/index.scss'
+
 import 'materialize-css/dist/js/materialize';
 
 Vue.config.productionTip = false
