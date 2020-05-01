@@ -1,6 +1,6 @@
 <template>
 	<nav>
-		<div class="nav-wrapper black">
+		<div class="nav-wrapper nav">
 			<router-link to="/" class="ml-5 brand-logo">
 				Code Exchanger
 			</router-link>
@@ -24,13 +24,19 @@
 </script>
 
 <style lang="scss" scoped>
+	@import '@/assets/scss/index';
+
 	.brand-logo {
 		margin-left: 1rem;
 	}
 
+	nav {
+		background-color: $black;
+	}
+
 	li {
 		&:hover {
-			background-color: gray;
+			background-color: $gray;
 		}
 	}
 </style>
