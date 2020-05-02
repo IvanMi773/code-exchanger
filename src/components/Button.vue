@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<router-link v-if="to" :to="to">
-			<button id="button">{{ text }}</button>
+			<button type="submit" id="button">{{ text }}</button>
 		</router-link>
 
-		<button v-else id="button">{{ text }}</button>
+		<button type="submit" v-else id="button">{{ text }}</button>
 	</div>
 </template>
 
