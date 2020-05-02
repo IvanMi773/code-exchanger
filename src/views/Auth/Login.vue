@@ -2,31 +2,23 @@
 	<div class="container">
 		<div class="row">
 			<form class="bg">
-				<div class="">
-					<h3>Вітаємо!</h3>
+				<h3>Вітаємо знову!</h3>
 
-					<div class="input-field">
-						<input id="name" type="text" class="validate" />
-						<label for="name">Імя</label>
-					</div>
-
-					<div class="input-field">
-						<input id="email" type="text" class="validate" />
-						<label for="email">Email</label>
-					</div>
-
-					<div class="input-field">
-						<input id="password" type="password" class="validate" />
-						<label for="password">Password</label>
-					</div>
-
-					<p>
-						Уже є аккаунт?
-						<router-link to="/login">Увійдіть</router-link>
-					</p>
-
-					<Button text="Зареєструватися" />
+				<div class="input-field">
+					<input id="email" type="text" class="validate" />
+					<label for="email">Email</label>
 				</div>
+
+				<div class="input-field">
+					<input id="password" type="password" class="validate" />
+					<label for="password">Password</label>
+				</div>
+
+                <p>Не має аккаунта?
+                    <router-link to="/register">Зареєструйтесь</router-link>    
+                </p>
+
+				<Button text="Увійти" />
 			</form>
 		</div>
 	</div>

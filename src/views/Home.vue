@@ -1,28 +1,31 @@
 <template>
-	<div class="bg row">
-		<div class="col s6">
-			<div class="container">
-				<h3 class="title">Що таке Code Exchanger?</h3>
+	<div>
+		<div class="bg row">
+			<div class="col s6">
+				<div class="container">
+					<h3 class="title">Що таке Code Exchanger?</h3>
 
-				<p class="text">
-					Code Exchanger - це простий інструмент для створення
-					проектів у невеликих командах
-				</p>
-
-				<div class="row">
-					<div class="col s3">
-						<Button text="Зареєструватися" />
-						<Button text="Гайд" />
-					</div>
+					<p class="text">
+						Code Exchanger - це простий інструмент для створення
+						проектів у невеликих командах
+					</p>
 				</div>
 			</div>
+
+			<div class="col s6">
+				<img
+					src="../../public/images/main_page.jpg"
+					class="right img"
+					alt="main page logo"
+				/>
+			</div>
 		</div>
-		<div class="col s6">
-			<img
-				src="../../public/images/main_page.jpg"
-				class="right img"
-				alt="main page logo"
-			/>
+
+		<div align="center">
+			<div>
+				<Button class="button" text="Зареєструватися" to="/register" />
+				<Button class="button" text="Гайд" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -44,6 +47,11 @@
 
 	.bg {
 		background-color: $light-gray;
+	}
+
+	.button {
+		display: inline-block;
+		margin-right: .5rem;
 	}
 
 	.img {

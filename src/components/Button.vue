@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<button id="button">{{ text }}</button>
+		<router-link v-if="to" :to="to">
+			<button id="button">{{ text }}</button>
+		</router-link>
+
+		<button v-else id="button">{{ text }}</button>
 	</div>
 </template>
 
@@ -13,6 +17,11 @@
 				type: String,
 				required: true,
 			},
+
+			to: {
+				type: String,
+				required: false,
+			}
 		},
 	};
 </script>

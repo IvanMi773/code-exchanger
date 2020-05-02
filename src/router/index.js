@@ -15,6 +15,12 @@ const routes = [
 		name: 'Register',
 		component: () => import('../views/Auth/Register'),
 	},
+
+	{
+		path: '/login',
+		name: 'Login',
+		component: () => import('../views/Auth/Login'),
+	},
 ];
 
 const router = new VueRouter({
