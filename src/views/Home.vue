@@ -9,10 +9,12 @@
 					проектів у невеликих командах
 				</p>
 
-                <div class="row">
-                    <Button text="Зареєструватися" />
-                    <Button text="Гайд" />
-                </div>
+				<div class="row">
+					<div class="col s3">
+						<Button text="Зареєструватися" />
+						<Button text="Гайд" />
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="col s6">
@@ -26,19 +28,19 @@
 </template>
 
 <script>
-    import Button from '@/components/Button';
-    
+	import Button from '@/components/Button';
+
 	export default {
-        name: 'Home',
-        
-        components: {
-            Button,
-        },
+		name: 'Home',
+
+		components: {
+			Button,
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
-    @import '@/assets/scss/index';
+	@import '@/assets/scss/index';
 
 	.bg {
 		background-color: $light-gray;
