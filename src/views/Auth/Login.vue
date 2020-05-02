@@ -1,18 +1,63 @@
 <template>
 	<div class="container">
 		<div class="row">
-			<form class="bg">
+			<form class="bg" @submit.prevent="submitHandler">
 				<h3>Вітаємо знову!</h3>
 
 				<div class="input-field">
-					<input id="email" type="text" class="validate" />
-					<label for="email">Email</label>
-				</div>
+						<input
+							id="email"
+							v-model="email"
+							type="text"
+							class="validate"
+							:class="{
+								invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email),
+							}"
+						/>
 
-				<div class="input-field">
-					<input id="password" type="password" class="validate" />
-					<label for="password">Password</label>
-				</div>
+						<label for="email">Email</label>
+
+						<span
+							class="helper-text invalid"
+							v-if="$v.email.$dirty && !$v.email.required"
+						>
+							Поле Email не можe бути пустим
+						</span>
+
+						<span
+							class="helper-text invalid"
+							v-if="$v.email.$dirty && !$v.email.email"
+						>
+							Введіть корректний Email
+						</span>
+					</div>
+
+					<div class="input-field">
+						<input
+							id="password"
+							v-model="password"
+							type="password"
+							class="validate"
+							:class="{
+								invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)
+							}"
+						/>
+						<label for="password">Password</label>
+
+						<span
+							class="helper-text invalid"
+							v-if="$v.password.$dirty && !$v.password.required"
+						>
+							Пароль не можe бути пустим
+						</span>
+
+						<span
+							class="helper-text invalid"
+							v-if="$v.password.$dirty && !$v.password.minLength"
+						>
+							Мінімальна довжина пароля: {{$v.password.$params.minLength.min }}
+						</span>
+					</div>
 
                 <p>Не має аккаунта?
                     <router-link to="/register">Зареєструйтесь</router-link>    
@@ -26,6 +71,7 @@
 
 <script>
 	import Button from '@/components/Button';
+	import { required, email, minLength } from 'vuelidate/lib/validators';
 
 	export default {
 		name: 'Register',
@@ -33,6 +79,34 @@
 		components: {
 			Button,
 		},
+
+		data() {
+			return {
+				email: '',
+				password: '',
+			}
+		},
+
+		validations: {
+			email: {
+				required,
+				email,
+			},
+
+			password: {
+				required,
+				minLength: minLength(6),
+			},
+		},
+
+		methods: {
+			submitHandler() {
+				if (this.$v.$invalid) {
+					this.$v.$touch();
+					return;
+				}
+			}
+		}
 	};
 </script>
 
@@ -46,6 +120,10 @@
 		margin-top: 1rem;
 		margin-bottom: auto;
 		padding: 1rem;
+	}
+
+	.invalid {
+		color: #f44336;
 	}
 
 	.input-field label {
