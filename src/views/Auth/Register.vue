@@ -12,7 +12,9 @@
 							type="text"
 							class="validate"
 							:class="{
-								invalid: ($v.name.$dirty && !$v.name.required) || ($v.name.$dirty && !$v.name.minLength)
+								invalid:
+									($v.name.$dirty && !$v.name.required) ||
+									($v.name.$dirty && !$v.name.minLength),
 							}"
 						/>
 
@@ -29,7 +31,8 @@
 							class="helper-text invalid"
 							v-if="$v.name.$dirty && !$v.name.minLength"
 						>
-							Мінімальна довжина імені: {{$v.name.$params.minLength.min }}
+							Мінімальна довжина імені:
+							{{ $v.name.$params.minLength.min }}
 						</span>
 					</div>
 
@@ -40,7 +43,9 @@
 							type="text"
 							class="validate"
 							:class="{
-								invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email),
+								invalid:
+									($v.email.$dirty && !$v.email.required) ||
+									($v.email.$dirty && !$v.email.email),
 							}"
 						/>
 
@@ -68,7 +73,11 @@
 							type="password"
 							class="validate"
 							:class="{
-								invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)
+								invalid:
+									($v.password.$dirty &&
+										!$v.password.required) ||
+									($v.password.$dirty &&
+										!$v.password.minLength),
 							}"
 						/>
 						<label for="password">Password</label>
@@ -84,7 +93,8 @@
 							class="helper-text invalid"
 							v-if="$v.password.$dirty && !$v.password.minLength"
 						>
-							Мінімальна довжина пароля: {{$v.password.$params.minLength.min }}
+							Мінімальна довжина пароля:
+							{{ $v.password.$params.minLength.min }}
 						</span>
 					</div>
 
@@ -92,6 +102,8 @@
 						Уже є аккаунт?
 						<router-link to="/login">Увійдіть</router-link>
 					</p>
+
+					<span v-if="err" class="helper-text invalid">Помилка валідації в одному з полів</span>
 
 					<Button text="Зареєструватися" />
 				</div>
@@ -103,6 +115,7 @@
 <script>
 	import Button from '@/components/Button';
 	import { required, email, minLength } from 'vuelidate/lib/validators';
+	import gql from 'graphql-tag';
 
 	export default {
 		name: 'Register',
@@ -116,6 +129,7 @@
 				name: '',
 				email: '',
 				password: '',
+				err: '',
 			};
 		},
 
@@ -132,7 +146,7 @@
 
 			password: {
 				required,
-				minLength: minLength(6),
+				minLength: minLength(8),
 			},
 		},
 
@@ -142,6 +156,36 @@
 					this.$v.$touch();
 					return;
 				}
+
+				this.$apollo.mutate({
+					mutation: gql`mutation($name: String!, $email: String!, $password: String!) {
+						register(
+							input: {
+								name: $name
+								email: $email
+								password: $password
+								password_confirmation: $password
+							}
+						) {
+							status
+						}
+					}`,
+
+					variables: {
+						name: this.name,
+						email: this.email,
+						password: this.password,
+						password_confirmation: this.password,
+					}
+				}).then(res => {
+					if (res.data.register.status === "SUCCESS") {
+						this.$router.push('/group')
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					error = this.err
+				})
 			},
 		},
 	};
