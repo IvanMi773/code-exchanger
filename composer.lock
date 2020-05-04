@@ -625,6 +625,10 @@
                 "crossdomain",
                 "laravel"
             ],
+            "support": {
+                "issues": "https://github.com/fruitcake/laravel-cors/issues",
+                "source": "https://github.com/fruitcake/laravel-cors/tree/1.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/barryvdh",
