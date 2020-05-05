@@ -1,0 +1,7 @@
+query ($id: ID!) {
+    user(id: $id) {
+        name
+        email
+        created_at
+    }
+}

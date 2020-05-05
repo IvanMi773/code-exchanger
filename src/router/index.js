@@ -21,6 +21,13 @@ const routes = [
 		name: 'Login',
 		component: () => import('../views/Auth/Login'),
 	},
+
+	{
+		path: '/group',
+		name: 'Group',
+		meta: { auth: true },
+		component: () => import('../views/Group'),
+	},
 ];
 
 const router = new VueRouter({
