@@ -129,6 +129,9 @@
 										token_type
 										user {
 											id
+											name
+											email
+											created_at
 										}
 									}
 							}`,
@@ -140,6 +143,7 @@
 					})
 					.then(res => {
 						this.$store.commit('changeUserId', res.data.login.user.id)
+						this.$store.commit('changeCurrentUser', res.data.login.user)
 
 						res = this.response
 						

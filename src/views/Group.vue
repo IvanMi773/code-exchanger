@@ -1,6 +1,6 @@
 <template>
     <div>
-        hello form group
+        hello from group
     </div>
 </template>
 
