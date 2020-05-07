@@ -19,7 +19,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('welcome', require('./views/welcome.vue').default);
+Vue.component('Register', require('./views/Auth/Register.vue').default);
+// Vue.component('navbar', require('./components/App/Navbar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,3 +32,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+// import Vue from 'vue'
+// import router from './router'
+// import store from './store'
+// import { createProvider } from './vue-apollo'
+// import Vuelidate from 'vuelidate'
+
+// // CSS import
+// import '@/assets/scss/index.scss'
+// import 'materialize-css/dist/js/materialize';
+
+// // Components import
+// import App from './App.vue'
+
+// Vue.use(Vuelidate)
+
+// Vue.config.productionTip = false
+
+// new Vue({
+//   router,
+//   store,
+//   apolloProvider: createProvider(),
+//   render: h => h(App)
+// }).$mount('#app')

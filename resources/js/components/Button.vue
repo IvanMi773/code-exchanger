@@ -27,7 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '@/assets/scss/index';
+    @import '../../sass/app';
 
 	#button {
 		background-color: $black;
