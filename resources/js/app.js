@@ -20,7 +20,6 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('welcome', require('./views/welcome.vue').default);
-Vue.component('Register', require('./views/Auth/Register.vue').default);
 // Vue.component('navbar', require('./components/App/Navbar.vue').default);
 
 /**

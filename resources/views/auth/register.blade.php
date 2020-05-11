@@ -53,6 +53,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Повторіть пароль') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="row">
                                 <p>Уже маєте аккаунт? <a href="/login" class="text-dark text-sm">Увійти</a></p>

@@ -6,4 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::auth();
 
-Route::get('/', 'AppController@index')->name('welcome');
+Route::get('/', 'App\AppController@index')->name('welcome');
+
+Route::get('/group/choose', 'App\GroupController@choose')->name('group.choose');
