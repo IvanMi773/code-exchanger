@@ -26,8 +26,6 @@
                         </div>
 
                        <group-users />
-
-                        
                     </form>
                 </div>
             </div>

@@ -5,7 +5,7 @@
                 for="member_name"
                 class="col-md-4 col-form-label text-md-right"
             >
-                Імя учасника
+                Імя учасника(-ів)
             </label>
 
             <div class="col-md-6">
@@ -19,7 +19,7 @@
                     />
                 </div>
 
-                <Button text="Додати учасника" @click="clickHandler" />
+                <button @click.prevent="clickHandler" id="button">Додати учасника</button>
             </div>
         </div>
 
@@ -45,7 +45,7 @@ export default {
 
     data() {
         return {
-            users: 1
+            users: 1,
         };
     },
 
@@ -58,3 +58,19 @@ export default {
     }
 };
 </script>
+
+<style lang="scss" scoped>
+    @import '../../sass/app';
+
+	#button {
+		background-color: $black;
+        color: #ffffff;
+        padding: 0.7rem;
+        border: none;
+        border-radius: 3px;
+
+		&:hover {
+			background-color: $gray;
+		}
+	}
+</style>
