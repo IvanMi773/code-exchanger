@@ -26,6 +26,11 @@ class GroupController extends AppController
         return view('group.choose');
     }
 
+    public function create() 
+    {
+        return view('group.create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

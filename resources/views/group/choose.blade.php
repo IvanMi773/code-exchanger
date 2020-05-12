@@ -34,8 +34,10 @@
 
                     <div class="form-group row mb-0">
                         <div class="">
-                            <button type="submit" class="btn btn-dark">
-                                {{ __('Створити групу') }}
+                            <button class="btn btn-dark">
+                                <a href="{{ route('group.create') }}">
+                                    {{ __('Створити групу') }}
+                                </a>
                             </button>
                         </div>
                     </div>
