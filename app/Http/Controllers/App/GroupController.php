@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\App;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateGroupRequest;
+use App\Models\Group;
 
 class GroupController extends AppController
 {
@@ -37,9 +39,14 @@ class GroupController extends AppController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateGroupRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $group = new Group();
+        $group->create($data);
+
+        return view('group.home');
     }
 
     /**

@@ -24,7 +24,7 @@ class CreateGroupsTable extends Migration
 
             $table->string('name');
 
-            $table->json('tasks');
+            $table->json('tasks')->nullable();
             $table->timestamps();
         });
     }
