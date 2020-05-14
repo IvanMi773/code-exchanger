@@ -42,11 +42,13 @@ class GroupController extends AppController
     public function store(CreateGroupRequest $request)
     {
         $data = $request->validated();
+        dd($data);
+        $user_id = auth()->user->id;
 
         $group = new Group();
-        $group->create($data);
+        $group->create($data, ['user_id' => $user_id]);
 
-        return view('group.home');
+        return redirect(url('group.show'));
     }
 
     /**
