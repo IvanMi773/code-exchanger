@@ -49,7 +49,7 @@ class GroupController extends AppController
             'name' => $data['group_name'],
         ]);
 
-        return redirect('/group/home');
+        return redirect('/group/home/' . $group->id);
     }
 
     /**
@@ -60,7 +60,9 @@ class GroupController extends AppController
      */
     public function show($id)
     {
-        //
+        $group = Group::find($id);
+
+        return view('group.home', compact('group'));
     }
 
     /**

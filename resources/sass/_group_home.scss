@@ -1,0 +1,31 @@
+#sidebar {
+    background-color: #C4C4C4;
+    color: $black;
+    height: 100%;
+}
+
+#home {
+    border: 1px groove $black;
+}
+
+.btn-danger {
+    background-color: $white !important;
+    color: $black !important;
+    border-color: $black !important;
+
+    &:hover {
+        background-color: $red !important;
+        color: $white !important;
+    }
+}
+
+.btn-primary {
+    background-color: $white !important;
+    color: $black !important;
+    border-color: $black !important;
+
+    &:hover {
+        background-color: $blue !important;
+        color: $white !important;
+    }
+}
