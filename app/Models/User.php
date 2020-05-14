@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function group()
     {
-        return $this->belongsTo(Group::class);
+        return $this->hasOne(Group::class);
     }
 
     public function tasks()

@@ -24,8 +24,15 @@ class CreateGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:250',
-            'user_id' => 'required',
+            'group_name' => 'required|min:3|max:250',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'group_name.required' => 'Введіть назву',
+            'group_name.min'  => 'Мінімальна довжина назви: 3',
         ];
     }
 }
