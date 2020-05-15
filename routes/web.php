@@ -12,3 +12,5 @@ Route::get('/group/choose', 'App\GroupController@choose')->name('group.choose');
 Route::get('/group/create', 'App\GroupController@create')->name('group.create');
 Route::post('/group/store', 'App\GroupController@store')->name('group.store');
 Route::get('/group/home/{id}', 'App\GroupController@show')->name('group.show');
+
+Route::get('/task/create', 'App\TaskController@create');

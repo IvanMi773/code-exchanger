@@ -7,10 +7,6 @@
   height: 100%;
 }
 
-#home {
-  border: 1px groove #24292e;
-}
-
 .btn-danger {
   background-color: #e8eaeb !important;
   color: #24292e !important;

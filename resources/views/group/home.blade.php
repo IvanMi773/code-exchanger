@@ -11,14 +11,17 @@
     </div>
 
     <div class="col-8">
-        <div class="row p-3 mx-auto" id="home">
+        <div class="row p-3 mx-auto">
             <div class="mr-auto">
-                <button class="btn btn-primary">Створити Завдання</button>
+                <a href="/task/create">
+                    <button class="btn btn-primary">Створити Завдання</button>
+                </a>
             </div>
 
             <div class="ml-auto">
-                <button class="btn btn-danger">Видалити учасника</button>
-                <button class="btn btn-danger">Видалити групу</button>
+                <button class="btn btn-primary">Редагувати групу</button>
+                {{-- <button class="btn btn-danger">Видалити учасника</button>
+                <button class="btn btn-danger">Видалити групу</button> --}}
             </div>
         </div>
     </div>
