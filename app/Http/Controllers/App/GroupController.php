@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateGroupRequest;
+use App\Http\Requests\Group\CreateGroupRequest;
 use App\Models\Group;
 
 class GroupController extends AppController
@@ -48,6 +48,8 @@ class GroupController extends AppController
         $group = auth()->user()->group()->create([
             'name' => $data['group_name'],
         ]);
+
+        auth()->user()->group_id = $group->id;
 
         return redirect('/group/home/' . $group->id);
     }

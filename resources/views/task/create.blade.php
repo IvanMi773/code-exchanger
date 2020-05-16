@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Текста задачі') }}</label>
+                            <label for="task" class="col-md-4 col-form-label text-md-right">{{ __('Текст задачі') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="task" type="text" class="form-control @error('task') is-invalid @enderror" name="task" value="{{ old('task') }}" required autocomplete="task" autofocus>
 
-                                @error('email')
+                                @error('task')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -26,14 +26,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Учасник') }}</label>
+                            <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('Учасник') }}</label>
 
                             <div class="col-md-6">
-                                <select name="" id="">
-                                    <option value=""></option>
+                                <select name="user_id" id="user_id" class="@error('user_id') is-invalid @enderror">
+                                    <option value="0">-Виберіть учасника-</option>
+                                    @foreach ($users as $user)
+                                       <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
                                 </select>
 
-                                @error('password')
+                                @error('user_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
