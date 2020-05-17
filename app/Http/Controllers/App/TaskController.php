@@ -21,14 +21,6 @@ class TaskController extends AppController
     {
         $data = $request->validated();
         $group_id = auth()->user()->group_id;
-        // dd(auth()->user());
-
-        // $task = new Task();
-        // $task->create([
-        //     'task' => $data['task'],
-        //     'user_id' => auth()->user()->id,
-        //     'group_id' => $group_id,
-        // ]);
 
         $task = auth()->user()->tasks()->create([
             'task' => $data['task'],

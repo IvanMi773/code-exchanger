@@ -7,10 +7,16 @@
             <h2>Сторінка групи {{ $group->name }}</h2>
 
             <h4>Завдання:</h4>
+
+            <ul class="list-group mb-4">
+                @foreach ($tasks as $task)
+                    <li class="list-group-item task-list">{{ $task->task }}</li>
+                @endforeach
+            </ul>
         </div>
     </div>
 
-    <div class="col-8">
+    <div class="col-8 ml-auto">
         <div class="row p-3 mx-auto">
             <div class="mr-auto">
                 <a href="/task/create">

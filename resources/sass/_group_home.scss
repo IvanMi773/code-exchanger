@@ -2,6 +2,13 @@
     background-color: #C4C4C4;
     color: $black;
     height: 100%;
+    position: fixed;
+}
+
+.task-list {
+    &:hover {
+        background-color: $light-gray;
+    }
 }
 
 .btn-danger {

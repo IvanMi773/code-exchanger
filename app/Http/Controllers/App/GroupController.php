@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use Illuminate\Http\Request;
 use App\Http\Requests\Group\CreateGroupRequest;
 use App\Models\Group;
+use App\Models\Task;
 
 class GroupController extends AppController
 {
@@ -65,8 +66,9 @@ class GroupController extends AppController
     public function show($id)
     {
         $group = Group::find($id);
+        $tasks = Task::where('group_id', '=', $group->id)->get();
 
-        return view('group.home', compact('group'));
+        return view('group.home', compact('group', 'tasks'));
     }
 
     /**

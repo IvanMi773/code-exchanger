@@ -5,6 +5,11 @@
   background-color: #C4C4C4;
   color: #24292e;
   height: 100%;
+  position: fixed;
+}
+
+.task-list:hover {
+  background-color: #c4c4c4;
 }
 
 .btn-danger {
@@ -10930,7 +10935,7 @@ a {
   color: #e8eaeb !important;
 }
 
-li:hover {
+nav li:hover {
   background-color: #4f5255;
 }
 
