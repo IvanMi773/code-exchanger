@@ -17,10 +17,6 @@ class CreateGroupsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('user_2_id')->nullable();
-            $table->unsignedBigInteger('user_3_id')->nullable();
-            $table->unsignedBigInteger('user_4_id')->nullable();
-            $table->unsignedBigInteger('user_5_id')->nullable();
 
             $table->string('name');
 

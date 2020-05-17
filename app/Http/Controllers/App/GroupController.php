@@ -50,6 +50,8 @@ class GroupController extends AppController
         ]);
 
         auth()->user()->group_id = $group->id;
+        auth()->user()->save();
+
 
         return redirect('/group/home/' . $group->id);
     }
