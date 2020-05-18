@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\App;
 
-use Illuminate\Http\Request;
+// Requests
 use App\Http\Requests\Group\CreateGroupRequest;
+use App\Http\Requests\Group\EnterToGroupRequest;
+use App\Http\Requests\Group\UpdateGroupRequest;
+
+// Models
 use App\Models\Group;
 use App\Models\Task;
+use App\Models\User;
 
 class GroupController extends AppController
 {
@@ -34,6 +39,18 @@ class GroupController extends AppController
         return view('group.create');
     }
 
+    public function enter(EnterToGroupRequest $request)
+    {
+        $data = $request->validated();
+
+        $group = Group::find($data['id']);
+
+        auth()->user()->group_id = $group->id;
+        auth()->user()->save();
+
+        return redirect('/group/home/' . $group->id);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +70,6 @@ class GroupController extends AppController
         auth()->user()->group_id = $group->id;
         auth()->user()->save();
 
-
         return redirect('/group/home/' . $group->id);
     }
 
@@ -63,9 +79,8 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Group $group)
     {
-        $group = Group::find($id);
         $tasks = Task::where('group_id', '=', $group->id)->get();
 
         return view('group.home', compact('group', 'tasks'));
@@ -77,9 +92,12 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Group $group)
     {
-        //
+        $group_id = auth()->user()->group_id;
+        $users = User::where('group_id', '=', $group_id)->get();
+
+        return view('group.edit', compact('users', 'group'));
     }
 
     /**
@@ -89,9 +107,15 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGroupRequest $request, Group $group)
     {
-        //
+        $data = $request->validated();
+        
+        $group->update([
+            'name' => $data['group_name'],
+        ]);
+
+        return redirect('/group/home/' . $group->id);
     }
 
     /**

@@ -25,9 +25,9 @@
             </div>
 
             <div class="ml-auto">
-                <button class="btn btn-primary">Редагувати групу</button>
-                {{-- <button class="btn btn-danger">Видалити учасника</button>
-                <button class="btn btn-danger">Видалити групу</button> --}}
+                <a href="/group/edit/{{ $group->id }}">
+                    <button class="btn btn-primary">Редагувати групу</button>
+                </a>
             </div>
         </div>
     </div>

@@ -8,37 +8,39 @@
                 <div class="card-header">{{ __('Виберіть потрібну дію') }}</div>
 
                 <div class="card-body ml-3">
-                    <div class="form-group row">
-                        <label for="group_id" class=" col-form-label text-md-right">{{ __('ID групи') }}</label>
-
-                        <div class="">
-                            <input id="group_id" type="text" class="form-control @error('group_id') is-invalid @enderror" name="group_id" value="{{ old('group_id') }}" required autocomplete="group_id" autofocus>
-
-                            @error('group_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                    <form method="GET" action="/group/enter">
+                        <div class="form-group row">
+                            <label for="id" class=" col-form-label text-md-right">{{ __('ID групи') }}</label>
+    
+                            <div class="">
+                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+    
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row mb-0">
-                        <div class="">
-                            <button type="submit" class="btn btn-dark">
-                                {{ __('Увійти в існуючу групу') }}
-                            </button>
+    
+                        <div class="form-group row mb-0">
+                            <div class="">
+                                <button type="submit" class="btn btn-dark">
+                                    {{ __('Увійти в існуючу групу') }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
                     Або
 
                     <div class="form-group row mb-0">
                         <div class="">
-                            <button class="btn btn-dark">
-                                <a href="{{ route('group.create') }}">
+                            <a href="{{ route('group.create') }}">
+                                <button class="btn btn-dark">
                                     {{ __('Створити групу') }}
-                                </a>
-                            </button>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
