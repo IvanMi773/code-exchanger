@@ -124,8 +124,16 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
-        //
+        $users = User::where('group_id', '=', $group->id)->get();
+        foreach ($users as $user) {
+            $user->group_id = 0;
+            $user->save();
+        }
+
+        $group->delete();
+
+        return redirect('/');
     }
 }

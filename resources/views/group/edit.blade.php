@@ -23,29 +23,6 @@
                             @enderror
                         </div>
 
-                        <div class="form-group row mx-auto">
-                            <select name="user_id" id="user_id" class="@error('user_id') is-invalid @enderror">
-                                <option value="0">-Виберіть учасника-</option>
-                                @foreach ($users as $user)
-                                   <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('user_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group row mx-auto">
-                            <button class="btn btn-danger">Видалити учасника</button>
-                        </div>
-
-                        <div class="form-group row mx-auto">
-                            <button class="btn btn-danger">Видалити групу</button>
-                        </div>
-
                         <div class="form-group row mb-0">
                              <div class="col-md-8 offset-md-4">
                                  <button type="submit" class="btn btn-dark">
@@ -54,6 +31,33 @@
                              </div>
                          </div>
                     </form>
+
+                    <div class="form-group row mx-auto">
+                        <select name="user_id" id="user_id" class="@error('user_id') is-invalid @enderror">
+                            <option value="0">-Виберіть учасника-</option>
+                            @foreach ($users as $user)
+                               <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('user_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group row mx-auto">
+                        <button class="btn btn-danger">Видалити учасника</button>
+                    </div>
+
+                    <div class="form-group row mx-auto">
+                        <form method="POST" action="/group/delete/{{ $group->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Видалити групу</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
