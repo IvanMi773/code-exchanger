@@ -6,6 +6,7 @@ namespace App\Http\Controllers\App;
 use App\Http\Requests\Group\CreateGroupRequest;
 use App\Http\Requests\Group\EnterToGroupRequest;
 use App\Http\Requests\Group\UpdateGroupRequest;
+use App\Http\Requests\Group\GroupUserDeleteRequest;
 
 // Models
 use App\Models\Group;
@@ -135,5 +136,23 @@ class GroupController extends AppController
         $group->delete();
 
         return redirect('/');
+    }
+
+    public function groupUserDelete(GroupUserDeleteRequest $request, Group $group)
+    {
+        $data = $request->validated();
+
+        $user = User::find($data['user_id']);
+
+        if ($group->user_id == $user->id) 
+        {
+            $group->user_id = 0;
+            $group->save();
+        }
+
+        $user->group_id = 0;
+        $user->save();
+
+        return \redirect('/group/home/' . $group->id);
     }
 }

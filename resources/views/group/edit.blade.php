@@ -32,24 +32,29 @@
                          </div>
                     </form>
 
-                    <div class="form-group row mx-auto">
-                        <select name="user_id" id="user_id" class="@error('user_id') is-invalid @enderror">
-                            <option value="0">-Виберіть учасника-</option>
-                            @foreach ($users as $user)
-                               <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
+                    <form method="POST" action="/group/user/delete/{{ $group->id }}">
+                        @method('DELETE')
+                        @csrf
 
-                        @error('user_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group row mx-auto">
-                        <button class="btn btn-danger">Видалити учасника</button>
-                    </div>
+                        <div class="form-group row mx-auto">
+                            <select name="user_id" id="user_id" class="@error('user_id') is-invalid @enderror">
+                                <option value="0">-Виберіть учасника-</option>
+                                @foreach ($users as $user)
+                                   <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+    
+                            @error('user_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+    
+                        <div class="form-group row mx-auto">
+                            <button type="submit" class="btn btn-danger">Видалити учасника</button>
+                        </div>
+                    </form>
 
                     <div class="form-group row mx-auto">
                         <form method="POST" action="/group/delete/{{ $group->id }}">
