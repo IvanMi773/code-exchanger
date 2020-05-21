@@ -7,6 +7,7 @@ use App\Http\Requests\Group\CreateGroupRequest;
 use App\Http\Requests\Group\EnterToGroupRequest;
 use App\Http\Requests\Group\UpdateGroupRequest;
 use App\Http\Requests\Group\GroupUserDeleteRequest;
+use App\Http\Requests\Group\AddUserRequest;
 
 // Models
 use App\Models\Group;
@@ -153,6 +154,18 @@ class GroupController extends AppController
         $user->group_id = 0;
         $user->save();
 
-        return \redirect('/group/home/' . $group->id);
+        return redirect('/group/home/' . $group->id);
+    }
+
+    public function addUser(GroupUserDeleteRequest $request, Group $group)
+    {
+        $data = $request->validated();
+
+        $user = User::find($data['user_id']);
+
+        $user->group_id = $group->id;
+        $user->save();
+
+        return redirect('/group/home/' . $group->id);
     }
 }

@@ -15,6 +15,7 @@ Route::get('/group/edit/{group}', 'App\GroupController@edit')->name('group.edit'
 Route::post('/group/update/{group}', 'App\GroupController@update')->name('group.update');
 Route::delete('/group/delete/{group}', 'App\GroupController@destroy')->name('group.delete');
 Route::delete('/group/user/delete/{group}', 'App\GroupController@groupUserDelete')->name('group.user.delete');
+Route::post('/group/user/add/{group}', 'App\GroupController@addUser');
 
 Route::get('/task/create', 'App\TaskController@create');
 Route::post('/task/store', 'App\TaskController@store')->name('task.store');

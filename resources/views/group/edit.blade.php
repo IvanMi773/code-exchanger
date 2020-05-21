@@ -56,6 +56,26 @@
                         </div>
                     </form>
 
+                    <form method="POST" action="/group/user/add/{{ $group->id }}">
+                        @csrf
+
+                        <div class="form-group row mx-auto">
+                            <label for="user_id" class="col-form-label text-md-right">{{ __('ID учасника') }}</label>
+
+                            <input id="user_id" type="text" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') }}" required autocomplete="user_id" autofocus>
+
+                            @error('user_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+    
+                        <div class="form-group row mx-auto">
+                            <button type="submit" class="btn btn-danger">Додати учасника</button>
+                        </div>
+                    </form>
+
                     <div class="form-group row mx-auto">
                         <form method="POST" action="/group/delete/{{ $group->id }}">
                             @csrf
