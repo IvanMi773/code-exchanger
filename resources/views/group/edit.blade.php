@@ -72,7 +72,7 @@
                         </div>
     
                         <div class="form-group row mx-auto">
-                            <button type="submit" class="btn btn-danger">Додати учасника</button>
+                            <button type="submit" class="btn btn-primary">Додати учасника</button>
                         </div>
                     </form>
 

@@ -20,7 +20,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('welcome', require('./views/welcome.vue').default);
-Vue.component('group-users', require('./components/GroupUsers.vue').default);
+// Vue.component('group-users', require('./components/GroupUsers.vue').default);
+// Vue.component('back', require('./components/Back.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

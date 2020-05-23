@@ -12,6 +12,15 @@
   background-color: #c4c4c4;
 }
 
+.link {
+  color: #24292e;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #24292e;
+}
+
 .btn-danger {
   background-color: #e8eaeb !important;
   color: #24292e !important;
@@ -10931,7 +10940,7 @@ nav {
   color: #e8eaeb !important;
 }
 
-a {
+nav a {
   color: #e8eaeb !important;
 }
 

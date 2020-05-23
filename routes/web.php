@@ -19,3 +19,5 @@ Route::post('/group/user/add/{group}', 'App\GroupController@addUser');
 
 Route::get('/task/create', 'App\TaskController@create');
 Route::post('/task/store', 'App\TaskController@store')->name('task.store');
+Route::get('/task/{task}', 'App\TaskController@show');
+Route::get('/task/edit/{task}', 'App\TaskController@edit')->name('task.edit');

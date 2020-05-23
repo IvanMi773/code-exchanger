@@ -11,6 +11,15 @@
     }
 }
 
+.link {
+    color: $black;
+
+    &:hover {
+        text-decoration: none;   
+        color: $black;
+    }
+}
+
 .btn-danger {
     background-color: $white !important;
     color: $black !important;

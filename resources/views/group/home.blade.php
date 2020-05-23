@@ -10,7 +10,9 @@
 
             <ul class="list-group mb-4">
                 @foreach ($tasks as $task)
-                    <li class="list-group-item task-list">{{ $task->task }}</li>
+                    <a href="/task/{{ $task->id }}" class="link">
+                        <li class="list-group-item task-list" title="Це завдання робить {{ $task->user_id }} учасник">{{ $task->task }}</li>
+                    </a>
                 @endforeach
             </ul>
         </div>
