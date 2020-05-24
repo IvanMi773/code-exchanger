@@ -7,12 +7,14 @@ use App\Models\Task;
 use App\Http\Requests\Task\CreateTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
 
+use App\Repositories\Task\TaskRepository;
+
 class TaskController extends AppController
 {
-    public function create()
+    public function create(TaskRepository $taskRepository)
     {
         $group_id = auth()->user()->group_id;
-        $users = User::where('group_id', '=', $group_id)->get();
+        $users = $taskRepository->UsersByGroupId($group_id);
 
         return view('task.create', compact('users'));
     }
