@@ -19,10 +19,21 @@
             </div>
 
             <div class="ml-auto">
-                <a href="/task/delete/{{ $task->id }}">
-                    <button class="btn btn-danger">Видалити завдання</button>
-                </a>
+                <form action="/task/delete/{{ $task->id }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger">Видалити завдання</button>
+                </form>
             </div>
+        </div>
+
+        <div class="row">
+            <pre>
+                <code>
+                    {{ $task->code }}
+                </code>
+            </pre>
         </div>
     </div>
 </div>

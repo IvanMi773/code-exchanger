@@ -8,18 +8,13 @@
                 <div class="card-header">{{ __('Додати код') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/group/update/{{ $task->id }}">
+                    <form method="POST" action="/task/update/{{ $task->id }}">
                         @csrf
 
                         <div class="form-group row mx-auto">
-                            <pre>
-                            <code data-language="python">
-                                <textarea rows="20" cols="40" id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" required>
-
-                                </textarea>
+                            <code>
+                                <textarea rows="20" cols="80" id="code" class="form-control @error('code') is-invalid @enderror" name="code" required></textarea>
                             </code>
-                            </pre>
-
 
                             @error('code')
                                 <span class="invalid-feedback" role="alert">

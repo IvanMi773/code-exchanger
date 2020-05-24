@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\App;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Task;
 use App\Http\Requests\Task\CreateTaskRequest;
+use App\Http\Requests\Task\UpdateTaskRequest;
 
 class TaskController extends AppController
 {
@@ -38,5 +38,23 @@ class TaskController extends AppController
     public function edit(Task $task)
     {
         return view('task.edit', compact('task'));
+    }
+
+    public function update(UpdateTaskRequest $request, Task $task)
+    {
+        $data = $request->validated();
+
+        $task->update([
+            'code' => trim($data['code']),
+        ]);
+
+        return redirect('/task/' . $task->id);
+    }
+
+    public function destroy(Task $task)
+    {
+        $task->delete();
+
+        return redirect('/group/home/' . $task->group_id);
     }
 }

@@ -21,3 +21,5 @@ Route::get('/task/create', 'App\TaskController@create');
 Route::post('/task/store', 'App\TaskController@store')->name('task.store');
 Route::get('/task/{task}', 'App\TaskController@show');
 Route::get('/task/edit/{task}', 'App\TaskController@edit')->name('task.edit');
+Route::post('/task/update/{task}', 'App\TaskController@update')->name('task.update');
+Route::delete('/task/delete/{task}', 'App\TaskController@destroy')->name('task.delete');

@@ -10,6 +10,7 @@ class Task extends Model
         'user_id',
         'group_id',
         'task',
+        'code',
     ];
 
     public function user()
