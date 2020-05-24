@@ -14,7 +14,7 @@ use App\Models\Group;
 use App\Models\Task;
 use App\Models\User;
 
-// use App\Repositories\Group\Interfaces\GroupInterface;
+// Repositories
 use App\Repositories\Group\GroupRepository;
 
 class GroupController extends AppController
@@ -34,11 +34,11 @@ class GroupController extends AppController
         return view('group.create');
     }
 
-    public function enter(EnterToGroupRequest $request)
+    public function enter(EnterToGroupRequest $request, GroupRepository $groupRepository)
     {
         $data = $request->validated();
 
-        $group = Group::find($data['id']);
+        $group = $groupRepository->GroupById($data['id']);
 
         auth()->user()->group_id = $group->id;
         auth()->user()->save();
@@ -74,9 +74,9 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show(Group $group, GroupRepository $groupRepository)
     {
-        $tasks = Task::where('group_id', '=', $group->id)->get();
+        $tasks = $groupRepository->TasksInGroup($group->id);
 
         return view('group.home', compact('group', 'tasks'));
     }
@@ -118,9 +118,10 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(Group $group, GroupRepository $groupRepository)
     {
-        $users = User::where('group_id', '=', $group->id)->get();
+        $users = $groupRepository->UsersInGroup();
+
         foreach ($users as $user) {
             $user->group_id = 0;
             $user->save();
@@ -131,11 +132,11 @@ class GroupController extends AppController
         return redirect('/');
     }
 
-    public function groupUserDelete(GroupUserDeleteRequest $request, Group $group)
+    public function groupUserDelete(GroupUserDeleteRequest $request, Group $group, GroupRepository $groupRepository)
     {
         $data = $request->validated();
 
-        $user = User::find($data['user_id']);
+        $user = $groupRepository->UserById($data['user_id']);
 
         if ($group->user_id == $user->id) 
         {
@@ -149,11 +150,11 @@ class GroupController extends AppController
         return redirect('/group/home/' . $group->id);
     }
 
-    public function addUser(GroupUserDeleteRequest $request, Group $group)
+    public function addUser(GroupUserDeleteRequest $request, Group $group, GroupRepository $groupRepository)
     {
         $data = $request->validated();
 
-        $user = User::find($data['user_id']);
+        $user = $groupRepository->UserById($data['user_id']);
 
         $user->group_id = $group->id;
         $user->save();
