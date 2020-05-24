@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm align-items-center">
+        <nav class="navbar navbar-expand-md shadow-sm row align-items-center">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item p-2"><h3>Code Exchanger</h3></li>
+                        <li class="nav-item p-2">
+                            <a href="/" class="link">
+                                <h3>
+                                    Code Exchanger
+                                </h3>
+                            </a>
+                        </li>
                         <li class="nav-item p-2">Як це працює?</li>
                         <li class="nav-item p-2">Про нас</li>
                     </ul>
@@ -55,6 +61,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="/group/home/{{ auth()->user()->group_id }}" class="dropdown-item">
+                                        Додому
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

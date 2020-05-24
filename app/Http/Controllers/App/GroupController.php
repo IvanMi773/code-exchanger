@@ -14,18 +14,11 @@ use App\Models\Group;
 use App\Models\Task;
 use App\Models\User;
 
+// use App\Repositories\Group\Interfaces\GroupInterface;
+use App\Repositories\Group\GroupRepository;
+
 class GroupController extends AppController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -94,10 +87,9 @@ class GroupController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit(Group $group, GroupRepository $groupRepository)
     {
-        $group_id = auth()->user()->group_id;
-        $users = User::where('group_id', '=', $group_id)->get();
+        $users = $groupRepository->UsersInGroup();
 
         return view('group.edit', compact('users', 'group'));
     }

@@ -10948,3 +10948,7 @@ nav li:hover {
   background-color: #4f5255;
 }
 
+.dropdown-item {
+  color: #24292e !important;
+}
+
