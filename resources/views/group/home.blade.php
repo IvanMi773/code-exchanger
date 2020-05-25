@@ -15,6 +15,13 @@
                     </a>
                 @endforeach
             </ul>
+
+            <h4>Учасники</h4>
+            <ul class="list-group mb-4">
+                @foreach ($users as $user)
+                    <li class="list-group-item task-list">{{ $user->name }}</li>
+                @endforeach
+            </ul>
         </div>
     </div>
 

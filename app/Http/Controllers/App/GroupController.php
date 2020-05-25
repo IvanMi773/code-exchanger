@@ -77,8 +77,9 @@ class GroupController extends AppController
     public function show(Group $group, GroupRepository $groupRepository)
     {
         $tasks = $groupRepository->TasksInGroup($group->id);
+        $users = $groupRepository->UsersInGroup();
 
-        return view('group.home', compact('group', 'tasks'));
+        return view('group.home', compact('group', 'tasks', 'users'));
     }
 
     /**
