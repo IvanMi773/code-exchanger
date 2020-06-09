@@ -10,7 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/highlight.pack.js') }}"></script>
+    {{-- <script src="/path/to/highlight.min.js"></script> --}}
+    <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +22,8 @@
     <!-- Styles -->
     <link href="../../sass/app.scss" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/a11y-light.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="/path/to/styles/default.css"> --}}
 </head>
 <body>
     <div id="app">
@@ -38,7 +43,11 @@
                                 </h3>
                             </a>
                         </li>
-                        <li class="nav-item p-2">Як це працює?</li>
+                        <li class="nav-item p-2">
+                            <a href="{{ route('howItWorks') }}" class="link">
+                                Як це працює?
+                            </a>
+                        </li>
                         <li class="nav-item p-2">Про нас</li>
                     </ul>
 

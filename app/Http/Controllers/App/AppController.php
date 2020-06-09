@@ -9,6 +9,11 @@ class AppController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('app.welcome');
+    }
+
+    public function howItWorks()
+    {
+        return view('app.how_it_works');
     }
 }

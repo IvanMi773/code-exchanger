@@ -50809,7 +50809,8 @@ module.exports = "/images/telegram.png?473b9e3ebdd7e4a177c1d6144b90b4c6";
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const hljs = require('../../node_modules/highlight.js');
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

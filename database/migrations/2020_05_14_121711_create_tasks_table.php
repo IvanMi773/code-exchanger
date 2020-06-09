@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('group_id');
             $table->text('task');
             $table->text('code')->nullable();
+            $table->string('code_language')->nullable();
             $table->timestamps();
         });
     }

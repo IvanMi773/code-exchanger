@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::auth();
 
 Route::get('/', 'App\AppController@index')->name('welcome');
+Route::get('/how-it-works', 'App\AppController@howItWorks')->name('howItWorks');
 
 Route::get('/group/choose', 'App\GroupController@choose')->name('group.choose');
 Route::get('/group/create', 'App\GroupController@create')->name('group.create');

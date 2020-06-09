@@ -30,7 +30,7 @@
 
         <div class="row">
             <pre>
-                <code>
+                <code class="cpp">
                     {{ $task->code }}
                 </code>
             </pre>
