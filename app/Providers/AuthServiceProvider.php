@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Task::class => TaskPolicy::class,
+        Group::class => GroupPolicy::class,
     ];
 
     /**
@@ -31,6 +32,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-task', 'App\Policies\TaskPolicy@create');
         Gate::define('update-task', 'App\Policies\TaskPolicy@update');
         Gate::define('delete-task', 'App\Policies\TaskPolicy@delete');
+
+        Gate::define('edit-group', 'App\Policies\GroupPolicy@edit');
 
         Passport::routes(function ($router) {
             $router->forAccessTokens();

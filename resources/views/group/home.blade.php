@@ -35,11 +35,13 @@
                 </div>
             @endif
 
-            <div class="ml-auto">
-                <a href="/group/edit/{{ $group->id }}">
-                    <button class="btn btn-primary">Редагувати групу</button>
-                </a>
-            </div>
+            @if (auth()->user()->id == $group->user_id)
+                <div class="ml-auto">
+                    <a href="/group/edit/{{ $group->id }}">
+                        <button class="btn btn-primary">Редагувати групу</button>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 </div>

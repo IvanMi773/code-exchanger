@@ -17,6 +17,8 @@ use App\Models\User;
 // Repositories
 use App\Repositories\Group\GroupRepository;
 
+use Illuminate\Support\Facades\Gate;
+
 class GroupController extends AppController
 {
     /**
@@ -26,7 +28,11 @@ class GroupController extends AppController
      */
     public function choose()
     {
-        return view('group.choose');
+        if (auth()->user()->group_id == 0) {
+            return view('group.choose');
+        } else {
+            return redirect('/group/home/' . auth()->user()->group_id);
+        }
     }
 
     public function create() 
@@ -104,13 +110,17 @@ class GroupController extends AppController
      */
     public function update(UpdateGroupRequest $request, Group $group)
     {
-        $data = $request->validated();
-        
-        $group->update([
-            'name' => $data['group_name'],
-        ]);
-
-        return redirect('/group/home/' . $group->id);
+        if (Gate::allows('edit-group', $group)) {
+            $data = $request->validated();
+            
+            $group->update([
+                'name' => $data['group_name'],
+            ]);
+    
+            return redirect('/group/home/' . $group->id);
+        } else {
+            return back();
+        }
     }
 
     /**
