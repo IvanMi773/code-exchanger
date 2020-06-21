@@ -11,22 +11,24 @@
     </div>
 
     <div class="col-8 ml-auto">
-        <div class="row p-3 mx-auto">
-            <div class="mr-auto">
-                <a href="/task/edit/{{ $task->id }}">
-                    <button class="btn btn-primary">Додати код завдання</button>
-                </a>
-            </div>
+        @if (auth()->user()->id == $task->user_id)
+            <div class="row p-3 mx-auto">
+                <div class="mr-auto">
+                    <a href="/task/edit/{{ $task->id }}">
+                        <button class="btn btn-primary">Додати код завдання</button>
+                    </a>
+                </div>
 
-            <div class="ml-auto">
-                <form action="/task/delete/{{ $task->id }}" method="POST">
-                    @method('DELETE')
-                    @csrf
+                <div class="ml-auto">
+                    <form action="/task/delete/{{ $task->id }}" method="POST">
+                        @method('DELETE')
+                        @csrf
 
-                    <button type="submit" class="btn btn-danger">Видалити завдання</button>
-                </form>
+                        <button type="submit" class="btn btn-danger">Видалити завдання</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        @endif
 
         <div class="row">
             <pre>

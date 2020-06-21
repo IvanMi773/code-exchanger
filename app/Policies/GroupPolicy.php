@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
+use App\Group;
 use App\Models\User;
-use App\Models\Task;
-use App\Models\Group;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TaskPolicy
+class GroupPolicy
 {
     use HandlesAuthorization;
 
@@ -26,10 +25,10 @@ class TaskPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\Group  $group
      * @return mixed
      */
-    public function view(User $user, Task $task)
+    public function view(User $user, Group $group)
     {
         //
     }
@@ -40,43 +39,43 @@ class TaskPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user, Group $group)
+    public function create(User $user)
     {
-        return $user->group_id == $group->id;
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\Group  $group
      * @return mixed
      */
-    public function update(User $user, Task $task)
+    public function update(User $user, Group $group)
     {
-        return $user->id == $task->user_id;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\Group  $group
      * @return mixed
      */
-    public function delete(User $user, Task $task)
+    public function delete(User $user, Group $group)
     {
-        return $user->id == $task->user_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\Group  $group
      * @return mixed
      */
-    public function restore(User $user, Task $task)
+    public function restore(User $user, Group $group)
     {
         //
     }
@@ -85,10 +84,10 @@ class TaskPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\Group  $group
      * @return mixed
      */
-    public function forceDelete(User $user, Task $task)
+    public function forceDelete(User $user, Group $group)
     {
         //
     }
