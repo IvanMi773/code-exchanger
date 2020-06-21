@@ -4,8 +4,11 @@ namespace App\Http\Controllers\App;
 
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Group;
 use App\Http\Requests\Task\CreateTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
+
+use Illuminate\Support\Facades\Gate;
 
 use App\Repositories\Task\TaskRepository;
 
@@ -14,15 +17,22 @@ class TaskController extends AppController
     public function create(TaskRepository $taskRepository)
     {
         $group_id = auth()->user()->group_id;
-        $users = $taskRepository->UsersByGroupId($group_id);
+        $group = Group::find($group_id);
 
-        return view('task.create', compact('users'));
+        if (Gate::allows('create-task', $group)) {
+            $users = $taskRepository->UsersByGroupId($group_id);
+    
+            return view('task.create', compact('users'));
+        } else {
+            return back();
+        }
     }
 
     public function store(CreateTaskRequest $request)
     {
         $data = $request->validated();
         $group_id = auth()->user()->group_id;
+        $group = Group::find($group_id);
 
         $task = auth()->user()->tasks()->create([
             'task' => $data['task'],
@@ -34,7 +44,9 @@ class TaskController extends AppController
 
     public function show(Task $task)
     {
-        return view('task.show', compact('task'));
+        $group = Group::find($task->group_id);
+
+        return view('task.show', compact('task', 'group'));
     }
 
     public function edit(Task $task)
@@ -48,6 +60,7 @@ class TaskController extends AppController
 
         $task->update([
             'code' => trim($data['code']),
+            'code_language' => $data['code_language'],
         ]);
 
         return redirect('/task/' . $task->id);

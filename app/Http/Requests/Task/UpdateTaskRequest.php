@@ -25,6 +25,7 @@ class UpdateTaskRequest extends FormRequest
     {
         return [
             'code' => 'required|min:10',
+            'code_language' => 'required',
         ];
     }
 }

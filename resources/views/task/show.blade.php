@@ -30,7 +30,7 @@
 
         <div class="row">
             <pre>
-                <code class="cpp">
+                <code class="{{ $task->code_language }} border">
                     {{ $task->code }}
                 </code>
             </pre>

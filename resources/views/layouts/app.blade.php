@@ -12,7 +12,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/highlight.pack.js') }}"></script>
-    {{-- <script src="/path/to/highlight.min.js"></script> --}}
     <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- Fonts -->
@@ -23,7 +22,6 @@
     <link href="../../sass/app.scss" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/a11y-light.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="/path/to/styles/default.css"> --}}
 </head>
 <body>
     <div id="app">

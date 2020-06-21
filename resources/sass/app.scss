@@ -1,18 +1,18 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 // Variables
-@import 'variables';
-@import 'group_home';
-@import 'Auth/Register.scss';
+@import "variables";
+@import "group_home";
+@import "Auth/Register.scss";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 body {
     font-family: $font-family-roboto;
     font-size: 1em;
-    min-height:100%;
+    min-height: 100%;
 }
 
 .brand-logo {
@@ -36,4 +36,20 @@ nav li {
 
 .dropdown-item {
     color: $black !important;
+}
+
+.bg {
+    background-color: $light-gray;
+}
+
+.bg-1 {
+    background-color: #e2f9e5;
+}
+
+.bg-2 {
+    background-color: #dee7fe;
+}
+
+.bg-3 {
+    background-color: #fdf1fa;
 }

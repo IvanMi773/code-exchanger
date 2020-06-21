@@ -27,11 +27,13 @@
 
     <div class="col-8 ml-auto">
         <div class="row p-3 mx-auto">
-            <div class="mr-auto">
-                <a href="/task/create">
-                    <button class="btn btn-primary">Створити Завдання</button>
-                </a>
-            </div>
+            @if (auth()->user()->group_id == $group->id)
+                <div class="mr-auto">
+                    <a href="/task/create">
+                        <button class="btn btn-primary">Створити Завдання</button>
+                    </a>
+                </div>
+            @endif
 
             <div class="ml-auto">
                 <a href="/group/edit/{{ $group->id }}">

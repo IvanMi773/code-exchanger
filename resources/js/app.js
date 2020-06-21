@@ -16,12 +16,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 Vue.component('welcome', require('./views/welcome.vue').default);
-// Vue.component('group-users', require('./components/GroupUsers.vue').default);
-// Vue.component('back', require('./components/Back.vue').default);
+Vue.component('Button', require('./components/Button.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,26 +29,3 @@ const app = new Vue({
     el: '#app',
 });
 
-// import Vue from 'vue'
-// import router from './router'
-// import store from './store'
-// import { createProvider } from './vue-apollo'
-// import Vuelidate from 'vuelidate'
-
-// // CSS import
-// import '@/assets/scss/index.scss'
-// import 'materialize-css/dist/js/materialize';
-
-// // Components import
-// import App from './App.vue'
-
-// Vue.use(Vuelidate)
-
-// Vue.config.productionTip = false
-
-// new Vue({
-//   router,
-//   store,
-//   apolloProvider: createProvider(),
-//   render: h => h(App)
-// }).$mount('#app')

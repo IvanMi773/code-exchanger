@@ -12,6 +12,23 @@
                         @csrf
 
                         <div class="form-group row mx-auto">
+                            <select name="code_language" id="code_language">
+                                <option value="0">--Виберіть мову програмування--</option>
+                                <option value="c++">C++</option>
+                                <option value="c#">C#</option>
+                                <option value="php">PHP</option>
+                                <option value="js">Js</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
+                                <option value="go">Go</option>
+                                <option value="dart">Dart</option>
+                                <option value="rust">Rust</option>
+                                <option value="java">Java</option>
+                                <option value="scala">Scala</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group row mx-auto">
                             <code>
                                 <textarea rows="20" cols="80" id="code" class="form-control @error('code') is-invalid @enderror" name="code" required></textarea>
                             </code>

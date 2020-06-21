@@ -10952,3 +10952,19 @@ nav li:hover {
   color: #24292e !important;
 }
 
+.bg {
+  background-color: #c4c4c4;
+}
+
+.bg-1 {
+  background-color: #e2f9e5;
+}
+
+.bg-2 {
+  background-color: #dee7fe;
+}
+
+.bg-3 {
+  background-color: #fdf1fa;
+}
+
