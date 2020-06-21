@@ -11,7 +11,9 @@ Route::get('/group/choose', 'App\GroupController@choose')->name('group.choose');
 Route::get('/group/create', 'App\GroupController@create')->name('group.create');
 Route::get('/group/enter', 'App\GroupController@enter')->name('group.enter');
 Route::post('/group/store', 'App\GroupController@store')->name('group.store');
-Route::get('/group/home/{group}', 'App\GroupController@show')->name('group.show');
+Route::get('/group/home/{group}', 'App\GroupController@show')
+    ->name('group.show')
+    ->middleware('canSeeGroupPage');
 Route::get('/group/edit/{group}', 'App\GroupController@edit')->name('group.edit');
 Route::post('/group/update/{group}', 'App\GroupController@update')->name('group.update');
 Route::delete('/group/delete/{group}', 'App\GroupController@destroy')->name('group.delete');

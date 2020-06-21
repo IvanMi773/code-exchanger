@@ -30,7 +30,7 @@ class GroupPolicy
      */
     public function view(User $user, Group $group)
     {
-        //
+        return $user->group_id == $group->id;
     }
 
     /**
