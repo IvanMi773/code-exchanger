@@ -10938,6 +10938,12 @@ body {
 nav {
   background-color: #24292e !important;
   color: #e8eaeb !important;
+  height: auto;
+  position: fixed;
+}
+
+main {
+  margin-top: 69px !important;
 }
 
 nav a {

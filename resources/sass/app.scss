@@ -22,6 +22,12 @@ body {
 nav {
     background-color: $black !important;
     color: $white !important;
+    height: auto;
+    position: fixed;
+}
+
+main {
+    margin-top: 69px !important;
 }
 
 nav a {

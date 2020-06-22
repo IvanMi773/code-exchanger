@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-4" id="sidebar">
+    <div class="col-4 d-block" id="sidebar">
         <div class="ml-4">
             <h2>Опис завдання:</h2>
 
